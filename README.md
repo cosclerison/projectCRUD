@@ -4,6 +4,20 @@
 --> npm i bootswatch bootstrap jquery @popperjs/core
 
 
+# Configurando styles, copiar linhas no arquivos styles.scss - trocar [theme] pelo tema escolhido no caso estamso usando [united]
+
+@import "~bootswatch/dist/[theme]/variables";
+@import "~bootstrap/scss/bootstrap";
+@import "~bootswatch/dist/[theme]/bootswatch";
+
+# configurando arquivo angular.json
+
+"scripts": [
+  "node_modules/jquery/dist/jquery.min.js",
+  "node_modules/@popperjs/core/dist/umd/popper.min.js",
+  "node_modules/bootstrap/dist/js/bootstrap.min.js"
+]
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.5.
 
