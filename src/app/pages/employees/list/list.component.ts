@@ -44,6 +44,7 @@ export class ListComponent implements OnInit {
     this.navigationExtras.state = item;
     this.router.navigate(['details'], this.navigationExtras);
   }
+  
   onGoToDelete(item: any): void{
     alert('Deleted');
   }

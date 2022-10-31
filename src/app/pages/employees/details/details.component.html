@@ -15,10 +15,9 @@
       </li>
     </ul>
   </div>
-
   <div class="btn-group" role="group">
-    <button type="button" class="btn btn-outline-warning m-1 btn-sm">Edit</button>
-    <button type="button" class="btn btn-outline-danger m-1 btn-sm">Delete</button>
+    <button type="button" class="btn btn-outline-warning m-1 btn-sm" (click)="onGoToEdit()">Edit</button>
+    <button type="button" class="btn btn-outline-danger m-1 btn-sm" (click)="onGoToDelete()">Delete</button>
   </div>
 </div>
-<button type="button" class="btn btn-secondary mt-2">Go Back to list</button>
+<button type="button" class="btn btn-secondary mt-2" (click)="goBackToList()">Go Back to list</button>

@@ -31,4 +31,12 @@ export class EditComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  saveEdition() {
+
+  }
+
+  cancelEdition() {
+    
+  }
+
 }
