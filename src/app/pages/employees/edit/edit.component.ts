@@ -1,3 +1,4 @@
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -14,8 +15,20 @@ export class EditComponent implements OnInit {
    */
   value: any;
 
+  /**
+   * propriedade vinculado com a tag FORM usando [formGroup], fica associado ao formulário
+   */
+  employeeForm!: FormGroup;
+
+  /**
+   * propriedade privada para validação do campo de email
+   * com esses caracteres malucos kkkkk /\s+@\s+\.\s+/
+   */
+  private isEmail = /\s+@\s+\.\s+/;
+  
   constructor(
-    private touter: Router
+    private touter: Router,
+    private formEdit: FormBuilder
   ) { 
     /**
      * Criado uma constante para receber o valor vindo da navegação da rota que foi
@@ -29,10 +42,27 @@ export class EditComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.initForm();
   }
 
-  saveEdition() {
+  onSave() {
+    console.log('saved', this.employeeForm.value);
+  }
 
+  /**
+   * Método para pegar os dados do formulário, com validações e requerimentos dos campos
+   * deste modo todos os inputs estão declarados como obrigatórios (required)
+   * seno utilizado um array nas propriedades do formulário acentuando valor iniciar 
+   * vazio e atribuído a validação
+   */
+  private initForm(): void{
+    this.employeeForm = this.formEdit.group({
+      name: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      // Email com validação usando pattern, sendo validado de acordo com a propriedade atribuída
+      email: ['', [Validators.required, Validators.pattern(this.isEmail)]],
+      startDate: ['', [Validators.required]],
+    })
   }
 
   cancelEdition() {
