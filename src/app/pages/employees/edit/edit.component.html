@@ -1,39 +1,41 @@
-  <form class="mt-3 col-md-8 offset-md-2" (ngSubmit)="onSave()" [formGroup]="employeeForm">
-    <div class="row mt-3">
-      <div class="form-group   col-md-6">
-        <input 
-          type="text" 
-          class="form-control" 
-          placeholder="Name"
-          formControlName="name">
-      </div>
-      <div class="form-group col-md-6">
-        <input 
-          type="text" 
-          class="form-control" 
-          placeholder="Last Name"
-          formControlName="lastName">
-      </div>
+<form class="mt-3 col-md-8 offset-md-2" (ngSubmit)="onSave()" [formGroup]="employeeForm">
+  <div class="row mt-3">
+    <div class="form-group   col-md-6">
+      <input 
+        type="text" 
+        class="form-control" 
+        placeholder="Name"
+        formControlName="name">
     </div>
-    <div class="row mt-3">
-      <div class="form-group col-md-6">
-        <input 
-          type="text" 
-          class="form-control" 
-          placeholder="E-Mail"
-          formControlName="email">
-      </div>
-      <div class="form-group col-md-6">
-        <input 
-          type="text" 
-          class="form-control" 
-          placeholder="Start Date 00/00/0000"
-          formControlName="startDate">
-      </div>
+    <div class="form-group col-md-6">
+      <input 
+        type="text" 
+        class="form-control" 
+        placeholder="Last Name"
+        formControlName="lastName">
     </div>
-    <div class="row mt-3">
-      <div class="btn-group" role="group">
-        <button type="submit" class="btn btn-outline-warning m-2 col-md-6">Save</button>
-      </div>
+  </div>
+  <div class="row mt-3">
+    <div class="form-group col-md-6">
+      <input 
+        type="text" 
+        class="form-control" 
+        placeholder="E-Mail"
+        formControlName="email">
     </div>
-  </form>
+    <div class="form-group col-md-6">
+      <input 
+        type="text" 
+        class="form-control" 
+        placeholder="Start Date 00/00/0000"
+        formControlName="startDate">
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="btn-group" role="group">
+      <button type="submit" class="btn btn-outline-warning m-2 col-md-6">Save</button>
+    </div>
+  </div>
+</form>
+
+{{value | json}}

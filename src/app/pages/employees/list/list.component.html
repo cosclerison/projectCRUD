@@ -9,10 +9,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="table-info" *ngFor="let item of [0, 1, 2, 3]">
-        <th scope="row">Clerison Oliveira</th>
-        <td>cosclerison@gmail.com</td>
-        <td>01/04/1984</td>
+      <tr class="table-info" *ngFor="let item of fakeData">
+        <th scope="row">{{ item.name }}</th>
+        <th scope="row">{{ item.lastName }}</th>
+        <th scope="row">{{ item.email }}</th>
+        <!-- <th scope="row">{{ item.startDate }}</th> -->
         <td class="btn-group d-none d-sm-block" role="group">
           <!-- Ação (click) esta passando o valor foreach item quando acionado -->
           <button type="button" class="btn btn-outline-warning m-1" (click)="onGoToEdit(item)" >Edit</button>

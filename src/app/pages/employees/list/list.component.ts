@@ -18,6 +18,39 @@ export class ListComponent implements OnInit {
     }
   };
 
+  fakeData = [
+    {
+      name: 'clerison',
+      lastName: 'Oliveira',
+      email: 'cosclerison@gmail.com',
+      startDate: '01/04/1984'
+    },
+    {
+      name: 'Juliana',
+      lastName: 'Vieira',
+      email: 'Juliana@gmail.com',
+      startDate: '18/06/1988'
+    },
+    {
+      name: 'Bianca',
+      lastName: 'Dias',
+      email: 'biancadias@gmail.com',
+      startDate: '11/03/2013'
+    },
+    {
+      name: 'Maggie',
+      lastName: 'Regina',
+      email: 'mregina@gmail.com',
+      startDate: '10/01/2015'
+    },
+    {
+      name: 'Tiger',
+      lastName: 'Turtle',
+      email: 'ninjaturtle@gmail.com',
+      startDate: '13/03/2014'
+    },
+  ]
+
   constructor(
     private router: Router
   ) { }
@@ -25,22 +58,22 @@ export class ListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * adicionado o valor de item no estado do objeto navigationExtras,
+   * atribuído o valor como segundo parâmetro na rota de navegação (assim a rota de navegação envia o valor
+   * que será recebido pela tela corrente, fazendo com que o valor recebido seja utilizado)
+   */
   onGoToEdit(item: any): void{
-    /**
-     * adicionado o valor de item no estado do objeto navigationExtras,
-     * atribuído o valor como segundo parâmetro na rota de navegação (assim a rota de navegação envia o valor
-     * que será recebido pela tela corrente, fazendo com que o valor recebido seja utilizado)
-     */
-    this.navigationExtras.state = item;
+  this.navigationExtras.state = item;
     this.router.navigate(['edit'], this.navigationExtras);
   }
 
-  onGoToDetails(item: any): void{
-    /**
-     * adicionado o valor de item no estado do objeto navigationExtras,
-     * atribuído o valor como segundo parâmetro na rota de navegação (assim a rota de navegação envia o valor
-     * que será recebido pela tela corrente, fazendo com que o valor recebido seja utilizado)
-     */
+  /**
+   * adicionado o valor de item no estado do objeto navigationExtras,
+   * atribuído o valor como segundo parâmetro na rota de navegação (assim a rota de navegação envia o valor
+   * que será recebido pela tela corrente, fazendo com que o valor recebido seja utilizado)
+   */
+    onGoToDetails(item: any): void{
     this.navigationExtras.state = item;
     this.router.navigate(['details'], this.navigationExtras);
   }
