@@ -13,7 +13,7 @@ export class EditComponent implements OnInit {
    * Criando uma propriedade com valor vazio para ser inserido
    *  o valor que vem do getCurrentNavigation
    */
-  value: any;
+   employee: any;
 
   /**
    * propriedade vinculado com a tag FORM usando [formGroup], fica associado ao formulário
@@ -27,7 +27,7 @@ export class EditComponent implements OnInit {
   private isEmail = /\s+@\s+\.\s+/;
   
   constructor(
-    private touter: Router,
+    private router: Router,
     private formEdit: FormBuilder
   ) { 
     /**
@@ -37,16 +37,22 @@ export class EditComponent implements OnInit {
      * assim atribuído o valor e ela.
      * deixamos os itens como opcionais caso tenha valor nos mesmos
      */
-    const navigation = this.touter.getCurrentNavigation();
-    this.value = navigation?.extras.state;
+    const navigation = this.router.getCurrentNavigation();
+    this.employee = navigation?.extras.state;
+    this.initForm();
   }
 
   ngOnInit(): void {
-    this.initForm();
+    if(typeof this.employee !== 'undefined') {
+      this.employeeForm.patchValue(this.employee);
+    } else {
+      this.router.navigate(['new']);
+    }
   }
 
   onSave() {
     console.log('saved', this.employeeForm.value);
+    this.router.navigate(['list']);
   }
 
   /**
@@ -66,7 +72,7 @@ export class EditComponent implements OnInit {
   }
 
   cancelEdition() {
-    
+    this.router.navigate(['list']);
   }
 
 }
