@@ -39,6 +39,9 @@ export class DetailsComponent implements OnInit {
    }
  
    ngOnInit(): void {
+    if(typeof this.employees === 'undefined') {
+      this.router.navigate(['list'])
+    }
    }
 
    onGoToEdit(): void{
