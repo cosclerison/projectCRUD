@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "projectcrud-employee": {
+      "hosting": {
+        "projectCRUD": [
+          "projectcrud-employee"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "projectcrud-employee"
+  }
+}

@@ -1,4 +1,4 @@
-# ProjectCRUD
+## ProjectCRUD C/ Firebase
 
 # Comandos executados durante o projeto
 --> npm i bootswatch bootstrap jquery @popperjs/core
@@ -19,6 +19,17 @@ deverá ficar assim:
   "node_modules/@popperjs/core/dist/umd/popper.min.js",
   "node_modules/bootstrap/dist/js/bootstrap.min.js"
 ]
+
+## FIREBASE
+
+Criar projeto no site, depois do projeto criado executar as linhas de comando dentro da pasta do projeto
+
+# npm install firebase
+# firebase login 
+"O mesmo fará uma validação no site com o login utilizando o email de cadastro ou email de autorização"
+# firebase init
+# ng add @angular/fire
+"neste ultimo comando devemos escolher o projeto criado no site."
 
 
 

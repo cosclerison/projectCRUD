@@ -6,6 +6,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { EmployeeFormModule } from './shared/components/employee-form/employee-form.module';
+import { environment } from '../environments/environment';
+
+
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 @NgModule({
   declarations: [
@@ -16,9 +21,10 @@ import { EmployeeFormModule } from './shared/components/employee-form/employee-f
     BrowserModule,
     AppRoutingModule,
     HeaderModule,
-    EmployeeFormModule
+    EmployeeFormModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
-  providers: [],
+  providers: [AngularFirestoreModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
