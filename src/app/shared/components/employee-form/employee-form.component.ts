@@ -1,3 +1,6 @@
+import { Employee } from './../../models/employee.interface';
+import { map } from 'rxjs/operators';
+import { EmployessService } from './../../../pages/employees/employess.service';
 import { Router } from '@angular/router';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -13,6 +16,7 @@ export class EmployeeFormComponent implements OnInit {
    * Criando uma propriedade com valor vazio para ser inserido
    *  o valor que vem do getCurrentNavigation
    */
+  //  employee: any;
    employee: any;
 
   /**
@@ -28,7 +32,8 @@ export class EmployeeFormComponent implements OnInit {
   
   constructor(
     private router: Router,
-    private formEdit: FormBuilder
+    private formEdit: FormBuilder,
+    private employessService: EmployessService
   ) { 
     /**
      * Criado uma constante para receber o valor vindo da navegação da rota que foi
@@ -55,9 +60,16 @@ export class EmployeeFormComponent implements OnInit {
     }
   }
 
-  onSave() {
-    console.log('saved', this.employeeForm.value);
-    this.router.navigate(['list']);
+  onSave(): void {
+    if(this.employeeForm.value !== undefined) {
+      const employee = this.employeeForm.value;
+      const employeeId = this.employee.id || null;
+      this.employessService.onSaveEmployee(employee, employeeId);
+      console.log('id', employeeId);
+      this.employeeForm.reset();
+    }
+    console.log(this.employeeForm.valid);
+    // this.router.navigate(['list']);
   }
 
   /**
