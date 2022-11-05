@@ -57,13 +57,14 @@ export class DetailsComponent implements OnInit {
   }
 
    goBackToList() {
-    this.router.navigate(['list']);
-   }
-
-   async onDeleteEmployees(): Promise<any>{
+     this.router.navigate(['list']);
+  }
+  
+  async onDeleteEmployees(): Promise<any>{
     try {
-      await this.employessService.onDeleteEmployees(this.employees.id);
       alert('Deleted');
+      this.router.navigate(['list']);
+      await this.employessService.onDeleteEmployees(this.employees.id);
     } catch (error: any) {
       console.log(error);
     }

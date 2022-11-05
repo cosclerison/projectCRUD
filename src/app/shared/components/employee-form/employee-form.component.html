@@ -5,14 +5,29 @@
         type="text" 
         class="form-control" 
         placeholder="Name"
-        formControlName="name">
+        formControlName="name"
+        required="required"
+        [class]="isValidField('name')"
+        >
+        <div class="invalid-feedback">
+          <span *ngIf="employeeForm.get('name')?.errors">
+            this field required
+          </span>
+        </div>
     </div>
     <div class="form-group col-md-6">
       <input 
         type="text" 
         class="form-control" 
         placeholder="Last Name"
-        formControlName="lastName">
+        formControlName="lastName"
+        [class]="isValidField('lastName')"
+        >
+        <div class="invalid-feedback">
+          <span *ngIf="employeeForm.get('lastName')?.errors">
+            this field required
+          </span>
+        </div>
     </div>
   </div>
   <div class="row mt-3">
@@ -21,14 +36,22 @@
         type="text" 
         class="form-control" 
         placeholder="E-Mail"
-        formControlName="email">
+        formControlName="email"
+        >
     </div>
     <div class="form-group col-md-6">
       <input 
         type="text" 
         class="form-control" 
         placeholder="Start Date 00/00/0000"
-        formControlName="startDate">
+        formControlName="startDate"
+        [class]="isValidField('startDate')"
+        >
+        <div class="invalid-feedback">
+          <span *ngIf="employeeForm.get('startDate')?.errors">
+            this field required
+          </span>
+        </div>
     </div>
   </div>
   <div class="row mt-3">

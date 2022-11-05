@@ -1,5 +1,3 @@
-import { Employee } from './../../models/employee.interface';
-import { map } from 'rxjs/operators';
 import { EmployessService } from './../../../pages/employees/employess.service';
 import { Router } from '@angular/router';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
@@ -90,4 +88,9 @@ export class EmployeeFormComponent implements OnInit {
     this.router.navigate(['list']);
   }
 
+  isValidField(field: string): string {
+    const validatedFiled = this.employeeForm.get(field);
+    return (!validatedFiled?.valid && validatedFiled?.touched)
+    ? 'is-invalid' : validatedFiled?.touched ? 'is-valid' : '';
+  }
 }
