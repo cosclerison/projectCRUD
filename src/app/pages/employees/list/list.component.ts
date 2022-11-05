@@ -1,3 +1,4 @@
+import { EmployessService } from './../employess.service';
 import { NavigationExtras, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -7,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
+  employees$ = this.employessService.getAll();
+  allUsers: any;
+  
   /**
    * Criado propriedade para ser usado o seu estado de objeto,
    * assim atribuindo valor a ele quando receber dados da ação do (click)
@@ -18,44 +22,18 @@ export class ListComponent implements OnInit {
     }
   };
 
-  fakeData = [
-    {
-      name: 'clerison',
-      lastName: 'Oliveira',
-      email: 'cosclerison@gmail.com',
-      startDate: '01/04/1984'
-    },
-    {
-      name: 'Juliana',
-      lastName: 'Vieira',
-      email: 'Juliana@gmail.com',
-      startDate: '18/06/1988'
-    },
-    {
-      name: 'Bianca',
-      lastName: 'Dias',
-      email: 'biancadias@gmail.com',
-      startDate: '11/03/2013'
-    },
-    {
-      name: 'Maggie',
-      lastName: 'Regina',
-      email: 'mregina@gmail.com',
-      startDate: '10/01/2015'
-    },
-    {
-      name: 'Tiger',
-      lastName: 'Turtle',
-      email: 'ninjaturtle@gmail.com',
-      startDate: '13/03/2014'
-    },
-  ]
-
   constructor(
-    private router: Router
+    private router: Router,
+    private employessService: EmployessService
   ) { }
 
   ngOnInit(): void {
+    this.getUsers();
+  }
+
+  async getUsers() {
+    this.allUsers = await this.employessService.getAll();
+    console.log(this.allUsers);
   }
 
   /**

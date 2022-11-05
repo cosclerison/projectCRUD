@@ -44,6 +44,7 @@ export class EmployeeFormComponent implements OnInit {
      */
     const navigation = this.router.getCurrentNavigation();
     this.employee = navigation?.extras.state;
+    console.log('constructor', this.employee);
     this.initForm();
   }
 
@@ -58,6 +59,7 @@ export class EmployeeFormComponent implements OnInit {
     } else {
       this.router.navigate(['new']);
     }
+    console.log('ngOnInit', this.employee);
   }
 
   onSave(): void {
@@ -65,10 +67,9 @@ export class EmployeeFormComponent implements OnInit {
       const employee = this.employeeForm.value;
       const employeeId = this.employee.id || null;
       this.employessService.onSaveEmployee(employee, employeeId);
-      console.log('id', employeeId);
-      this.employeeForm.reset();
     }
-    console.log(this.employeeForm.valid);
+    console.log('onSave', this.employee);
+    // this.employeeForm.reset();
     // this.router.navigate(['list']);
   }
 
@@ -81,10 +82,10 @@ export class EmployeeFormComponent implements OnInit {
   private initForm(): void{
     this.employeeForm = this.formEdit.group({
       name: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
+      lastName: ['silva', [Validators.required]],
       // Email com validação usando pattern, sendo validado de acordo com a propriedade atribuída
-      email: ['', [Validators.required, Validators.pattern(this.isEmail)]],
-      startDate: ['', [Validators.required]],
+      email: ['cos@silva.com', [Validators.required, Validators.pattern(this.isEmail)]],
+      startDate: ['01041984', [Validators.required]],
     })
   }
 

@@ -1,5 +1,4 @@
 import { AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { Employee } from './../../shared/models/employee.interface';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
@@ -10,16 +9,16 @@ import { Observable } from 'rxjs';
 })
 export class EmployessService {
   [x: string]: any;
-  employees!: Observable<Employee[]>;
+  employees!: Observable<any[]>;
 
   private employeesCollection: any = AngularFirestoreCollection;
   employee: any;
 
   constructor(
-      private readonly afs: AngularFirestore
+      private readonly afs: AngularFirestore,
   ) { 
     this.employeesCollection = afs.collection<any>('employees');
-    this.getEmployees();
+    this.getAll();
   }
 
   onDeleteEmployee(empId: string): Promise<void> {
@@ -40,19 +39,17 @@ export class EmployessService {
         const data = {id, ...employeeData};
         const result = await this.employeesCollection.doc(id).set(Object.assign({}, data))
         resolve(result);
-        console.log('onSaveEmployee', result);
+        // console.log('onSaveEmployee', result);
       } catch (err: any) {
         reject(err.message);
       }
     });
   }
 
-  private getEmployees(): void {
-    this.employees = this.employeesCollection
-      .get()
-      .pipe(
-        map((actions: any) => actions.map((a: any) => a.payload.doc.data() as Employee))
-      );
-      console.log('getEmployees', this.employees);
+  getAll() {
+    return new Promise<any>((resolve)=> {
+      this.afs.collection('employees').valueChanges({ idField: 'id' }).subscribe(users => resolve(users));
+    })
   }
+
 }
