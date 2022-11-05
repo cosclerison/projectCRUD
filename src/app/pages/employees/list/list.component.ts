@@ -1,3 +1,4 @@
+import { async } from '@angular/core/testing';
 import { EmployessService } from './../employess.service';
 import { NavigationExtras, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -56,8 +57,14 @@ export class ListComponent implements OnInit {
     this.router.navigate(['details'], this.navigationExtras);
   }
   
-  onGoToDelete(item: any): void{
-    alert('Deleted');
+  async onDeleteEmployees(empId: string): Promise<any>{
+    try {
+      alert('Deleted');
+      location.reload();
+      await this.employessService.onDeleteEmployees(empId);
+    } catch (error: any) {
+      console.log(error);
+    }
   }
 
 }

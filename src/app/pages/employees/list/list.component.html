@@ -18,7 +18,7 @@
           <!-- Ação (click) esta passando o valor foreach item quando acionado -->
           <button type="button" class="btn btn-outline-warning m-1" (click)="onGoToEdit(item)" >Edit</button>
           <button type="button" class="btn btn-outline-warning m-1" (click)="onGoToDetails(item)">Details</button>
-          <button type="button" class="btn btn-outline-danger m-1"(click)="onGoToDelete(item)">Delete</button>
+          <button type="button" class="btn btn-outline-danger m-1"(click)="onDeleteEmployees(item.id)">Delete</button>
         </td>
       </tr>
     </tbody>

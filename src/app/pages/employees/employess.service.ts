@@ -21,11 +21,10 @@ export class EmployessService {
     this.getAll();
   }
 
-  onDeleteEmployee(empId: string): Promise<void> {
+  onDeleteEmployees(empId: string): Promise<void> {
     return new Promise(async(resolve, reject) => {
       try {
         const result = await this.employeesCollection.doc(empId).delete();
-        console.log('onDeleteEmployee', result)
       } catch (error: any) {
         reject(error.message);
       }
@@ -35,11 +34,10 @@ export class EmployessService {
   onSaveEmployee(employeeData: any, empId: string): Promise<void> {
     return new Promise(async(resolve, reject) => {
       try {
-        const id = empId || this.afs.createId();
+        const id = empId  || this.afs.createId();
         const data = {id, ...employeeData};
         const result = await this.employeesCollection.doc(id).set(Object.assign({}, data))
         resolve(result);
-        // console.log('onSaveEmployee', result);
       } catch (err: any) {
         reject(err.message);
       }

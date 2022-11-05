@@ -1,3 +1,4 @@
+import { EmployessService } from './../employess.service';
 import { NavigationExtras, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -25,7 +26,8 @@ export class DetailsComponent implements OnInit {
    employees: any = null;
 
    constructor(
-     private router: Router
+     private router: Router,
+     private employessService: EmployessService
    ) { 
      /**
       * Criado uma constante para receber o valor vindo da navegação da rota que foi
@@ -58,8 +60,13 @@ export class DetailsComponent implements OnInit {
     this.router.navigate(['list']);
    }
 
-   onGoToDelete(): void{
-    alert('Deleted');
+   async onDeleteEmployees(): Promise<any>{
+    try {
+      await this.employessService.onDeleteEmployees(this.employees.id);
+      alert('Deleted');
+    } catch (error: any) {
+      console.log(error);
+    }
   }
  
  }
